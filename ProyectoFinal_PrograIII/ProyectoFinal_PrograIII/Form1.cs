@@ -21,6 +21,7 @@ namespace ProyectoFinal_PrograIII
         List<Comunidad> Comunidades = new List<Comunidad>();
         List<TipoGasto> TiposGastos = new List<TipoGasto>();
         List<Propiedades> Propiedad = new List<Propiedades>();
+        List<Propietarios> Propietario = new List<Propietarios>();
 
         void LeerComunidad()
         {
@@ -82,13 +83,30 @@ namespace ProyectoFinal_PrograIII
 
             reader.Close();
 
-            dataGridView1.DataSource = Propiedad;
+           // dataGridView1.DataSource = Propiedad;
 
         }
 
+        void LeerPropietarios()
+        {
+            string fileName = @"C:\Users\Hiuwini\Source\Repos\Proyecto_Final\ProyectoFinal_PrograIII\ProyectoFinal_PrograIII\obj\Propietarios.txt";
+            FileStream stream = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+            StreamReader reader = new StreamReader(stream);
+            while (reader.Peek() > -1)
+            {
+                Propietarios temp = new Propietarios();
+                temp.Nombre_propietario = reader.ReadLine();
+                temp.Nit_propietario = reader.ReadLine();
+                temp.Email_propietario= reader.ReadLine();
+                Propietario.Add(temp);
+            }
+
+            reader.Close();
+            //dataGridView1.DataSource = Propietario;
+        }
         private void button1_Click(object sender, EventArgs e)
         {
-            LeerPropiedades();
+            LeerPropietarios();
         }
     }
 }
