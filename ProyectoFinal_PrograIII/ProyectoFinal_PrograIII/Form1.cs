@@ -19,6 +19,7 @@ namespace ProyectoFinal_PrograIII
         }
 
         List<Comunidad> Comunidades = new List<Comunidad>();
+        List<TipoGasto> TiposGastos = new List<TipoGasto>();
 
         void LeerComunidad()
         {
@@ -39,10 +40,29 @@ namespace ProyectoFinal_PrograIII
            // dataGridView1.DataSource = Comunidades;
         }
 
-        
+        void LeerTipoGasto()
+        {
+            string fileName = @"C:\Users\Hiuwini\Source\Repos\Proyecto_Final\ProyectoFinal_PrograIII\ProyectoFinal_PrograIII\obj\TipoGastos.txt";
+            FileStream stream = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+            StreamReader reader = new StreamReader(stream);
+            while (reader.Peek() > -1)
+            {
+                TipoGasto temp = new TipoGasto();
+                temp.Codigo_gasto = reader.ReadLine();
+                temp.Nombre_gasto = reader.ReadLine();
+                temp.Tipo_gasto = reader.ReadLine();
+                TiposGastos.Add(temp);
+            }
+
+            reader.Close();
+
+            dataGridView1.DataSource = TiposGastos;
+            
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            LeerComunidad();
+            LeerTipoGasto();
         }
     }
 }
