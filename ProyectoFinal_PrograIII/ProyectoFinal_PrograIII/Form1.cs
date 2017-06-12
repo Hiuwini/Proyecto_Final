@@ -123,10 +123,14 @@ namespace ProyectoFinal_PrograIII
 
             reader.Close();
 
-            dataGridView1.DataSource = Gasto;
+           // dataGridView1.DataSource = Gasto;
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            LeerComunidad();
+            LeerTipoGasto();
+            LeerPropiedades();
+            LeerPropietarios();
             LeerGastos();
         }
     }
