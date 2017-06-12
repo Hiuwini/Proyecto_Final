@@ -20,6 +20,7 @@ namespace ProyectoFinal_PrograIII
 
         List<Comunidad> Comunidades = new List<Comunidad>();
         List<TipoGasto> TiposGastos = new List<TipoGasto>();
+        List<Propiedades> Propiedad = new List<Propiedades>();
 
         void LeerComunidad()
         {
@@ -51,18 +52,43 @@ namespace ProyectoFinal_PrograIII
                 temp.Codigo_gasto = reader.ReadLine();
                 temp.Nombre_gasto = reader.ReadLine();
                 temp.Tipo_gasto = reader.ReadLine();
+                
                 TiposGastos.Add(temp);
             }
 
             reader.Close();
 
-            dataGridView1.DataSource = TiposGastos;
+            //dataGridView1.DataSource = TiposGastos;
             
+        }
+
+        void LeerPropiedades()
+        {
+            string fileName = @"C:\Users\Hiuwini\Source\Repos\Proyecto_Final\ProyectoFinal_PrograIII\ProyectoFinal_PrograIII\obj\Propiedades.txt";
+            FileStream stream = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+            StreamReader reader = new StreamReader(stream);
+            while (reader.Peek() > -1)
+            {
+                Propiedades temp = new Propiedades();
+                temp.Tipo_propiedad = reader.ReadLine();
+                temp.Codigo_propiedad = reader.ReadLine();
+                temp.Metros_propiedad = Convert.ToInt32(reader.ReadLine());
+                temp.Nit_propietario = reader.ReadLine();
+                temp.Porcentaje_gasto = reader.ReadLine();
+                temp.Infoespe1 = reader.ReadLine();
+                temp.Infoespe2 = reader.ReadLine();
+                Propiedad.Add(temp);
+            }
+
+            reader.Close();
+
+            dataGridView1.DataSource = Propiedad;
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            LeerTipoGasto();
+            LeerPropiedades();
         }
     }
 }
