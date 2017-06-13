@@ -11,6 +11,7 @@ namespace ProyectoFinal_PrograIII
         string tipo_propiedad;
         string codigo_propiedad;
         int metros_propiedad;
+        int codigo_comunidad;
         string nit_propietario;
         string porcentaje_gasto;
         string infoespe1;
@@ -52,6 +53,19 @@ namespace ProyectoFinal_PrograIII
             set
             {
                 metros_propiedad = value;
+            }
+        }
+
+        public int Codigo_comunidad
+        {
+            get
+            {
+                return codigo_comunidad;
+            }
+
+            set
+            {
+                codigo_comunidad = value;
             }
         }
 
@@ -106,5 +120,7 @@ namespace ProyectoFinal_PrograIII
                 infoespe2 = value;
             }
         }
+
+     
     }
 }
