@@ -450,5 +450,48 @@ namespace ProyectoFinal_PrograIII
             }
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            DataGridViewTextBoxColumn columna1 = new DataGridViewTextBoxColumn();
+            columna1.HeaderText = "Codigo";
+            columna1.Width = 60;
+            columna1.ReadOnly = true;
+
+            DataGridViewTextBoxColumn columna2 = new DataGridViewTextBoxColumn();
+            columna2.HeaderText = "Nombre Propietario";
+            columna2.Width = 120;
+            columna2.ReadOnly = true;
+
+            DataGridViewTextBoxColumn columna3 = new DataGridViewTextBoxColumn();
+            columna3.HeaderText = "E-Mail";
+            columna3.Width = 100;
+            columna3.ReadOnly = true;
+
+            DataGridViewTextBoxColumn columna4 = new DataGridViewTextBoxColumn();
+            columna4.HeaderText = "Propiedades";
+            columna4.Width = 100;
+            columna4.ReadOnly = true;
+
+            dataGridView2.Columns.Add(columna1);
+            dataGridView2.Columns.Add(columna2);
+            dataGridView2.Columns.Add(columna3);
+            dataGridView2.Columns.Add(columna4);
+            int cont = 0;
+            foreach (Propiedades x in Propiedad)
+            {
+                foreach (Propietarios i in Propietario)
+                {
+                    if (x.Nit_propietario == i.Nit_propietario)
+                    {
+              
+                        dataGridView2.Rows.Add(cont.ToString(), i.Nombre_propietario, i.Email_propietario,
+                            x.Codigo_propiedad);
+                        cont++;
+                    }
+                }
+
+            }
+        }
     }
 }
